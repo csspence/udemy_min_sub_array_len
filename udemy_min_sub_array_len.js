@@ -21,5 +21,12 @@ minSubArrayLen([1,4,16,222,5,7,8,9,10], 95) // 0
 */
 
 const minSubArrayLen = (arr, num) => {
-  
+  let current = 2;
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] >= num) {
+      return 1;
+    }
+  }
+
+  return 0;
 }
