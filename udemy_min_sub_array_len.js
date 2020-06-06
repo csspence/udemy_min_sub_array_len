@@ -21,12 +21,23 @@ minSubArrayLen([1,4,16,222,5,7,8,9,10], 95) // 0
 */
 
 const minSubArrayLen = (arr, num) => {
-  let current = 2;
-  for(let i = 0; i < arr.length; i++) {
-    if(arr[i] >= num) {
-      return 1;
+  let total = 0;
+  let start = 0;
+  let end = 0;
+  let minLength = Infinity;
+
+  while(start < arr.length) {
+    if(total < num && end < arr.length) {
+      total += arr[end];
+      end++;
+    } else if(total >= sum) {
+      minLength = Math.min(minLength, end-start);
+      total -= arr[start];
+      start++;
+    } else {
+      break;
     }
   }
 
-  return 0;
+  return minLength === Infinity ? 0 : minLength;
 }
